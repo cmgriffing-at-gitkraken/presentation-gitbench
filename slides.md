@@ -3,8 +3,8 @@ theme: ./theme
 background: /brand-4.png
 title: How Devs Use AI
 info: |
-  ## How Devs Use AI
-  Based on GitKraken's "The AI Multiplier Effect" — 2,172 developer-weeks of data.
+  ## Git Benched
+  What models are actually good at using Git?
 class: text-center
 drawings:
   persist: false
@@ -12,8 +12,8 @@ transition: slide-left
 mdc: true
 ---
 
-# How Devs Use AI
-What the Data Actually Says
+# Git Benched with GitBench
+by GitKraken
 
 ---
 layout: image-right
@@ -34,259 +34,222 @@ layout: cover
 background: /brand-3.png
 ---
 
-# Why This Talk?
+# Why Benchmark?
+
+Inspiration and Justifications
 
 ---
-layout: fact
+layout: image
+image: /swebench.png
 ---
 
-# 2,172
-developer-weeks of usage data
-
 ---
-layout: statement
+layout: image
+image: /terminal-bench.png
 ---
 
-# This is a data talk.
+---
+layout: image
+image: /artificial-analysis.png
+---
 
 ---
 layout: cover
 background: /brand-4.png
 ---
 
-###### The Problem
-# The Number You've Heard Is Wrong
-
----
-layout: fact
----
-
-# <span style="text-decoration: line-through">10x</span>
-"AI makes devs 10x more productive"
-
----
-layout: fact
----
-
-# 14x
-more commits (for power users)
-
----
-layout: fact
----
-
-# 15x
-more test code (for power users)
-
----
-layout: statement
----
-
-# Those numbers are misleading, but why?
-
----
-layout: statement
----
-
-# 95% Adoption Rate
-According to survey
-
-https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-
----
-layout: cover
-background: /brand-5.png
----
-
-###### Who's Actually Using It?
-# Who Actually Uses AI Heavily?
+# GitKraken AI
 
 ---
 layout: image
-image: /ai-activity-gap.png
+image: /gk-commits.png
 ---
 
-
 ---
-layout: fact
----
-
-# Senior Engineers
-already touch more of the codebase
-
----
-layout: fact
+layout: image
+image: /gk-commit-composer.png
 ---
 
-# 2x Output
-startup devs vs. enterprise
-
 ---
-layout: statement
+layout: image
+image: /gk-conflict.png
 ---
 
-# AI amplifies what's already there.
-
-<!-- It doesn't create 10x engineers from scratch. -->
-
 ---
-layout: cover
-background: /brand-1.png
+layout: image
+image: /gk-explain.png
 ---
 
-###### The Data
-# The Real Number
-
----
-layout: fact
 ---
 
-# ~25% more productive
-comparing devs against themselves, one year apart
+![](./images/theo-tweet-benchmarks.png)
 
 ---
-layout: fact
----
 
-# 4x more test code
-friction drops, so devs actually write tests
+# Also... Fun!
 
----
-layout: statement
----
+I Wanted to try Spec-Driven Development:
 
-# 25% is real. It compounds.
-
-<!-- That's a big deal. Year over year, this adds up. -->
+- BMAD: https://github.com/bmad-code-org/bmad-method
+- GSD
+  - GSD: https://github.com/gsd-build/get-shit-done
+  - GSD-2: https://github.com/gsd-build/gsd-2
+- Openspec: https://openspec.dev/
+- Spec-kit: https://github.com/github/spec-kit
+- PAUL: https://github.com/ChristopherKahler/paul
+- Superpowers: https://github.com/obra/Superpowers
 
 ---
 layout: cover
 background: /brand-2.png
 ---
 
-###### But...
-# The Catch
+# What is GitBench?
+
+---
+
+# GitBench's Moving Parts
+
+- CLI
+  - Python 
+    - click for CLI args
+    - rich for TUI output
+- Web UI
+  - Astro
+  - Shadcn
+  - Recharts
+  - Vercel (API endpoints)
+  - SQLite (instead of a 20+ MB JSON file)
+
+---
+layout: image
+image: /openrouter.png
+---
 
 ---
 layout: fact
 ---
 
-# 9x more code churn
-code rewritten within 2 weeks
+# Warning: Vibe-Coded
 
 ---
 layout: fact
 ---
 
-# 4x more copy-paste duplication
-AI still struggles with DRY
+# GSD2 -> Openspec
+
+---
+layout: cover
+background: /bobross-1.webp
+---
+
+# Happy Little Surprises
+
+---
+
+# Structured Output
+
+JSON Schema vs Raw Text Output
+
+- Some models don't even support this
+- Some give broken output (Need to validate)
+
+```json
+{
+  "The Commit message we were expecting but inside invalid JSON"
+}
+```
+
+---
+
+
+
+---
+
+# Commit Messages
+
+## Generative Results:  Needed LLMs as Judges
+
+Models:
+- ibm-granite/granite-4.1-8b
+- google/gemma-4-26b-a4b-it
+- openai/gpt-oss-120b:xhigh
+
+---
+
+# Semantic Scoring as the Wrong Approach
+
+## Conflict Resolution
+
+Similarity doesn't make sense as a scoring mechanism.
+
+Merge Conflict Resolution should be deterministic
+
+---
+layout: cover
+background: /brand-1.png
+---
+
+# The Biggest Surprise?
+
+---
+layout: fact
+---
+
+# NSFW Content
+
+---
+layout: image
+image: /nsfw.jpg
+---
+
+---
+layout: image
+image: /nsfw-part-2.png
+---
+
+---
+layout: fact
+---
+
+# Nemotron is AGI
+
+---
+layout: cover
+background: /brand-5.png
+---
+
+# Teased Results
+
+---
+layout: image
+image: /gitbench-results-general.png
+---
+
+---
+
+# Effort and Structured Output Results Are Unintuitive
+
+<img src="./images/structured-output-new.png" class="max-h-[40vh] mx-auto" />
+
+---
+
+<img src="./images/fable-effort-regression.png" class="max-h-[40vh] mx-auto" />
+
+---
+layout: cover
+background: /brand-2.png
+---
+
+<h2>Demo: Live Results</h2>
 
 ---
 layout: statement
 ---
 
-# Velocity climbs.
-The codebase gets harder to change.
+<img src="./images/gitbench-overview.png" class="max-h-[40vh] mx-auto" />
 
----
-layout: statement
----
-
-# Devs who review AI output catch it.
-Most don't look.
-
-<!-- Good news: devs are catching it. But only if they're looking. -->
-
----
-layout: cover
-background: /brand-3.png
----
-
-###### Takeaway
-# What To Actually Measure
-
----
-
-# Track the Trade-offs
-
-<div class="grid grid-cols-3 gap-5 mt-12 text-center">
-
-<div class="rounded-xl overflow-hidden bg-[rgba(40,40,40,0.8)]">
-<div class="h-1.5 bg-[#B657FF]"></div>
-<div class="p-5">
-
-#### Productivity
-
-<div class="text-[#A4A4A4] text-sm mt-3 leading-7">
-
-PR cycle time
-
-Deployment frequency
-
-</div>
-</div>
-</div>
-
-<div class="rounded-xl overflow-hidden bg-[rgba(40,40,40,0.8)]">
-<div class="h-1.5 bg-[#196FFF]"></div>
-<div class="p-5">
-
-#### Quality
-
-<div class="text-[#A4A4A4] text-sm mt-3 leading-7">
-
-Code churn rate
-
-Duplication
-
-Post-merge defects
-
-</div>
-</div>
-</div>
-
-<div class="rounded-xl overflow-hidden bg-[rgba(40,40,40,0.8)]">
-<div class="h-1.5 bg-[#01FEE0]"></div>
-<div class="p-5">
-
-#### Efficiency
-
-<div class="text-[#A4A4A4] text-sm mt-3 leading-7">
-
-Output increase
-
-vs. review time increase
-
-</div>
-</div>
-</div>
-
-</div>
-
-<div class="mt-4 pt-6 text-center">
-<p class="gradient-text text-4xl! font-bold m-0">Track all three, not just velocity.</p>
-</div>
-
----
-layout: cover
-background: /brand-4.png
----
-
-###### The Bottom Line
-# Force Multiplier, Not Magic
-
-AI tools amplify your team's existing strengths and weaknesses.
-
-
----
-layout: quote
----
-
-# AI does make devs more productive
-
-Whether that lasts depends on what you measure.
-
-<!-- The question isn't whether AI makes devs more productive. It does. The question is whether you're measuring the right things to make it last. -->
+https://gitbench.gitkraken.com
 
 ---
 layout: cover
